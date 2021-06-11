@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background-color:#00FFFF;">
+ <div class="login">
+	<h1 style="text-align:center;color:#0000ff;" >Coverage Predcition for Cellular Networks</h1>
+	<br>	
+	<h2 style="line-height: 0px;"><u>Height:</u></h2>
+	<p>&emsp;&emsp;&emsp;&emsp;It represents the height of the tower at which it has been positioned from the ground.</p>
+	<h2 style="line-height: 0px;"><u>Vertical Beamwidth:</u></h2>
+	<p>&emsp;&emsp;&emsp;&emsp;The beam width measurement for an antenna comes in two planes, the vertical and horizontal plane. When the antenna is physically positioned in the proper "right-side-up" orientation, the horizontal plane is the plane parallel to the ground, and the vertical plane is perpendicular to the horizontal plane.</p>
+     	<h2 style="line-height: 0px;"><u>Tilt:</u></h2>
+	<p>&emsp;&emsp;&emsp;&emsp;The tilt represents the inclination or angle of the antenna to its axis.When we apply a tilt, we change the antenna radiation pattern.</p>
+	<!-- Main Input For Receiving Query to our ML -->
+	<img src='static\Antenna.jpg' style="float:left;border: 5px solid #555;" />
+    	<form style="text-align:center;background-color:purple;" action="{{ url_for('predict')}}"method="post">
+    	<label for="Height"><h2>Height</h2></label>
+	<select name="Height" id="Height" style="height:20px;width:90px;">
+        <option value="20">20</option>
+  	<option value="30">30</option>
+  	<option value="40">40</option>
+  	<option value="50">50</option>
+	<option value="60">60</option>
+	</select>
+    	<br>
+    	<label for="VB"><h2>Vertical Beamwidth</h2></label>
+	<select name="VB" id="VB" style="height:20px;width:90px;">
+        <option value="3">3</option>
+  	<option value="5">5</option>
+  	<option value="7">7</option>
+  	<option value="9">9</option>
+	</select>
+        <br>
+        <label for="Tilt"><h2>Tilt</h2></label>
+	<select name="Tilt" id="Tilt" style="height:20px;width:90px;">
+        <option value="0">0</option>
+  	<option value="1">1</option>
+  	<option value="2">2</option>
+  	<option value="3">3</option>s
+	<option value="4">4</option>
+  	<option value="5">5</option>
+  	<option value="6">6</option>
+  	<option value="7">7</option>
+	<option value="8">8</option>
+  	<option value="9">9</option>
+  	<option value="10">10</option>
+  	<option value="11">11</option>
+	<option value="12">12</option>
+	</select>
+        <br>
+	<br>
+        <button style="height:50px;width:90px;" type="submit" class="btn btn-primary btn-block btn-large"><h3>Predict</h3></button>
+    	<h1 style="text-align:center;color:black;"> {{ prediction_text }} </h1>
+	</form>
+	
+   <br>
+ </div>
+</body>
+</html>
